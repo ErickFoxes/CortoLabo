@@ -6,6 +6,7 @@
 package Factory;
 
 import Aritmetico.FactoryAritmetico;
+import Conversor.FactoryConversor;
 
 /**
  *
@@ -16,6 +17,8 @@ public class FactoryProducer {
         switch (type){
             case "Suma":
                 return  new FactoryAritmetico();
+            case "Bina":
+                return new FactoryConversor();
             
         }
         return null;

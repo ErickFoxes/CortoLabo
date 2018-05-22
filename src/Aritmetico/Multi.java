@@ -11,8 +11,7 @@ package Aritmetico;
  */
 public class Multi implements Ari{
     @Override
-    public int srdm(int a,int b) {
-        System.out.println("Multi wii");
-        return 0;
+    public String srdm(int a,int b) {
+        return Integer.toString(a*b);
     }
 }

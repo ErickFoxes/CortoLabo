@@ -6,8 +6,8 @@
 package Factory;
 
 import Aritmetico.Ari;
-import Aritmetico.FactoryAritmetico;
-import Aritmetico.Suma;
+
+import Conversor.Conver;
 
 /**
  *
@@ -15,4 +15,5 @@ import Aritmetico.Suma;
  */
 public interface AbstractFactor {
     Ari getAri(String type);
+    Conver getConver(String type);
 }

@@ -12,10 +12,9 @@ package Aritmetico;
 public class Suma implements Ari {
 
     @Override
-    public int srdm(int a,int b) {
+    public String srdm(int a,int b) {
         System.out.println(a+b);
-        System.out.println("Sumar wii");
-        return a+b;
+        return Integer.toString(a+b);
     }
     
 }

@@ -10,5 +10,5 @@ package Aritmetico;
  * @author uca
  */
 public interface Ari {
-    int srdm(int a,int b);
+    String srdm(int a,int b);
 }

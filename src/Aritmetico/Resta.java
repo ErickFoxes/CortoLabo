@@ -11,8 +11,7 @@ package Aritmetico;
  */
 public class Resta implements Ari{
     @Override
-    public int srdm(int a,int b) {
-        System.out.println("Restar wii");
-        return 0;
+    public String srdm(int a,int b) {
+        return Integer.toString(a-b);
     }
 }

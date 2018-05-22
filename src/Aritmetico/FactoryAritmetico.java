@@ -5,6 +5,8 @@
  */
 package Aritmetico;
 
+import Conversor.Binario;
+import Conversor.Conver;
 import Factory.AbstractFactor;
 
 /**
@@ -27,6 +29,11 @@ public class FactoryAritmetico implements AbstractFactor{
                 
              
         }
+        return null;
+    }
+    @Override
+    public Conver getConver(String type) {
+       
         return null;
     }
     

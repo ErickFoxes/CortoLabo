@@ -6,11 +6,14 @@
 package gui;
 
 import Aritmetico.Ari;
+import Conversor.Conver;
 import Factory.AbstractFactor;
 import Factory.FactoryProducer;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -23,6 +26,9 @@ import javax.swing.JTextField;
 public class Ventana extends JFrame{
     private JTextField caja1,caja2,caja3; 
     private JButton botonS,botonR,botonD,botonM,botonB;
+    String Regex;
+    
+    
     public Ventana(){
         super("Titulo de la ventana");
         initComponent();
@@ -65,50 +71,128 @@ public class Ventana extends JFrame{
         contenedor.add(caja2);
         contenedor.add(caja1);
         contenedor.add(caja3);
-        AbstractFactor factory;
+        AbstractFactor factory, factoryb;
 
         
         factory =  FactoryProducer.getFactory("Suma");
+        factoryb =  FactoryProducer.getFactory("Bina");
+        
+        Regex = "[+-/*]";
+        
+        
         botonS.addActionListener(new ActionListener(){
-            int c;
+            String c;
             @Override
-            public void actionPerformed(ActionEvent e) {
-                
-            Ari sumar = factory.getAri("Suma");
             
-            c=sumar.srdm(Integer.parseInt(caja1.getText()),Integer.parseInt(caja2.getText()));
-            caja3.setText();
+            public void actionPerformed(ActionEvent e) {
+                Pattern patron = Pattern.compile(Regex);
+                Matcher m = patron.matcher(caja1.getText());
+                Matcher n = patron.matcher(caja2.getText());
+                boolean coincidencia = m.find();
+                boolean coincidenci = n.find();
+                if(coincidencia){
+                     JOptionPane.showMessageDialog(null, "No se aceptan los signos +,-,* ni /");
+                }else if(coincidenci){
+                     JOptionPane.showMessageDialog(null, "No se aceptan los signos +,-,* ni /");
+                }
+                else{
+                    Ari sumar = factory.getAri("Suma");
+
+                    c=sumar.srdm(Integer.parseInt(caja1.getText()),Integer.parseInt(caja2.getText()));
+                    caja3.setText(c);
+                }
+                
             }
         });
         botonR.addActionListener(new ActionListener(){
-            
+            String c;
             @Override
             public void actionPerformed(ActionEvent e) {
+                Pattern patron = Pattern.compile(Regex);
+                Matcher m = patron.matcher(caja1.getText());
                 
-            Ari Restar = factory.getAri("Resta");
-            Restar.srdm(Integer.parseInt(caja1.getText()),Integer.parseInt(caja2.getText()));
+                 Matcher n = patron.matcher(caja2.getText());
+                boolean coincidenci = n.find();
+                
+                boolean coincidencia = m.find();
+                if(coincidencia){
+                     JOptionPane.showMessageDialog(null, "No se aceptan los signos +,-,* ni /");
+                }else if(coincidenci){
+                     JOptionPane.showMessageDialog(null, "No se aceptan los signos +,-,* ni /");
+                }else{
+                    Ari Restar = factory.getAri("Resta");
+                    c=Restar.srdm(Integer.parseInt(caja1.getText()),Integer.parseInt(caja2.getText()));
+                    caja3.setText(c);
+                }
+            
             }
         });
         botonD.addActionListener(new ActionListener(){
-            
+            String c;
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-            Ari Divi = factory.getAri("Division");
-            Divi.srdm(Integer.parseInt(caja1.getText()),Integer.parseInt(caja2.getText()));
+                Pattern patron = Pattern.compile(Regex);
+                Matcher m = patron.matcher(caja1.getText());
+                Matcher n = patron.matcher(caja2.getText());
+                boolean coincidenci = n.find();
+                boolean coincidencia = m.find();
+                if(coincidencia){
+                     JOptionPane.showMessageDialog(null, "No se aceptan los signos +,-,* ni /");
+                }else if(coincidenci){
+                     JOptionPane.showMessageDialog(null, "No se aceptan los signos +,-,* ni /");
+                }else{
+                    Ari Divi = factory.getAri("Division");
+                    c=Divi.srdm(Integer.parseInt(caja1.getText()),Integer.parseInt(caja2.getText()));
+                    caja3.setText(c);
+                }
+            
             }
         });
         botonM.addActionListener(new ActionListener(){
-            
+            String c;
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-            Ari Multipli = factory.getAri("Multiplicacion");
-            Multipli.srdm(Integer.parseInt(caja1.getText()),Integer.parseInt(caja2.getText()));
+                Pattern patron = Pattern.compile(Regex);
+                Matcher m = patron.matcher(caja1.getText());
+                Matcher n = patron.matcher(caja2.getText());
+                boolean coincidenci = n.find();
+                boolean coincidencia = m.find();
+                if(coincidencia){
+                     JOptionPane.showMessageDialog(null, "No se aceptan los signos +,-,* ni /");
+                }else if(coincidenci){
+                     JOptionPane.showMessageDialog(null, "No se aceptan los signos +,-,* ni /");
+                }else{
+                    Ari Multipli = factory.getAri("Multiplicacion");
+                    c=Multipli.srdm(Integer.parseInt(caja1.getText()),Integer.parseInt(caja2.getText()));
+                    caja3.setText(c);
+                }
+            
+            }
+        });
+        botonB.addActionListener(new ActionListener(){
+           String c;
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Pattern patron = Pattern.compile(Regex);
+                Matcher m = patron.matcher(caja1.getText());
+                Matcher n = patron.matcher(caja2.getText());
+                boolean coincidenci = n.find();
+                boolean coincidencia = m.find();
+                if(coincidencia){
+                     JOptionPane.showMessageDialog(null, "No se aceptan los signos +,-,* ni /");
+                }else if(coincidenci){
+                     JOptionPane.showMessageDialog(null, "No se aceptan los signos +,-,* ni /");
+                }else{
+                    Conver Bina = factoryb.getConver("Bina");
+                    c=Bina.bina(Integer.parseInt(caja1.getText()));
+                   caja3.setText(c);
+                }
+            
             }
         });
         
-        setSize(400,400);     
+        
+        setSize(600,400);     
     }
     public static void main(String[] args){
         java.awt.EventQueue.invokeLater(new Runnable(){
